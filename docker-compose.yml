@@ -6,6 +6,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - 6080:6080
+      - 3000:3000
     volumes:
       - .:/develop/
       - ./browser-profile:/app/browser-profile

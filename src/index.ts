@@ -12,8 +12,7 @@ app.get("/", async (c) => {
 	> | null = null;
 	try {
 		context = await chromium.launchPersistentContext("/app/browser-profile", {
-			headless: false,
-			slowMo: 10000,
+			//headless: false,
 			args: ["--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage"],
 		});
 		const page = await context.newPage();

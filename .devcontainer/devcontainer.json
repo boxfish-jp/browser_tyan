@@ -1,0 +1,14 @@
+{
+	"name": "minimum_devcontainer",
+	"dockerComposeFile": "../docker-compose.yml",
+	"service": "scraper",
+	"shutdownAction": "stopCompose",
+	"workspaceFolder": "/app",
+	"workspaceMount": "source=${localWorkspaceFolder},target=/app,type=bind,consistency=cached",
+	"overrideCommand": true,
+	"features": {
+		"ghcr.io/devcontainers/features/desktop-lite:1": {
+			"webPort": "6080"
+		}
+	}
+}

@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  scraper:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 6080:6080
+    volumes:
+      - .:/develop/
+      - ./browser-profile:/app/browser-profile
+    working_dir: /app
+    shm_size: '1gb'

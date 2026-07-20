@@ -1,6 +1,6 @@
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
-import { chromium } from "playwright";
+import { chromium } from "playwright-core";
 
 const app = new Hono();
 

@@ -33,12 +33,21 @@
           formatter = pkgs.nixfmt-tree;
           devShells.default = (import ./nix/dev_shell.nix) { inherit pkgs chromium-rev; };
           packages.default = (import ./nix/package.nix) {
-            inherit pkgs pname version src node pnpm chromium-rev;
+            inherit
+              pkgs
+              pname
+              version
+              src
+              node
+              pnpm
+              chromium-rev
+              ;
           };
         }
       );
     in
-    perSystem // {
+    perSystem
+    // {
       nixosModules.default = nixosModule;
     };
 

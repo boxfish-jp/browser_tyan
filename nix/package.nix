@@ -1,4 +1,12 @@
-{ pkgs, pname, version, src, node, pnpm, chromium-rev }:
+{
+  pkgs,
+  pname,
+  version,
+  src,
+  node,
+  pnpm,
+  chromium-rev,
+}:
 
 pkgs.stdenv.mkDerivation (finalAttrs: {
   inherit src version pname;
@@ -10,7 +18,12 @@ pkgs.stdenv.mkDerivation (finalAttrs: {
   ];
 
   pnpmDeps = pkgs.fetchPnpmDeps {
-    inherit version src pnpm pname;
+    inherit
+      version
+      src
+      pnpm
+      pname
+      ;
     fetcherVersion = 4;
     hash = "sha256-SfiihhmAnsZxjDVckuEJ08lBCpclkQh8i5MHB+hYKh4=";
   };

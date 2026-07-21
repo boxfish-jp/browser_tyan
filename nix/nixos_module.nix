@@ -1,4 +1,10 @@
-self: { lib, config, pkgs, ... }:
+self:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.services.browser-tyan;
@@ -20,6 +26,12 @@ in
       type = lib.types.port;
       default = 3000;
       description = "Port for the HTTP server to listen on";
+    };
+
+    host = lib.mkOption {
+      type = lib.types.str;
+      default = "0.0.0.0";
+      description = "Host address to bind to (0.0.0.0 for all interfaces)";
     };
 
     profileDir = lib.mkOption {
@@ -51,6 +63,7 @@ in
         DynamicUser = true;
         StateDirectory = "browser-tyan";
         Environment = [
+          "BROWSER_TYAN_HOST=${cfg.host}"
           "BROWSER_TYAN_PORT=${toString cfg.port}"
           "BROWSER_TYAN_PROFILE_DIR=${cfg.profileDir}"
         ];

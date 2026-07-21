@@ -7,6 +7,7 @@ import { chromium } from "playwright-core";
 const app = new Hono();
 
 const PORT = parseInt(process.env.BROWSER_TYAN_PORT ?? "3000", 10);
+const HOST = process.env.BROWSER_TYAN_HOST ?? "0.0.0.0";
 const PROFILE_DIR =
   process.env.BROWSER_TYAN_PROFILE_DIR ??
   join(homedir(), ".local/share/broweser-tyan/");
@@ -77,8 +78,9 @@ serve(
   {
     fetch: app.fetch,
     port: PORT,
+    host: HOST,
   },
   (info) => {
-    console.log(`Server is running on http://localhost:${info.port}`);
+    console.log(`Server is running on http://${HOST}:${info.port}`);
   },
 );

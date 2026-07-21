@@ -10,8 +10,7 @@ pkgs.stdenv.mkDerivation (finalAttrs: {
   ];
 
   pnpmDeps = pkgs.fetchPnpmDeps {
-    pname = "streamingkit";
-    inherit version src pnpm;
+    inherit version src pnpm pname;
     fetcherVersion = 4;
     hash = "sha256-SfiihhmAnsZxjDVckuEJ08lBCpclkQh8i5MHB+hYKh4=";
   };

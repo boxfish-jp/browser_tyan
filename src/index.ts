@@ -78,7 +78,7 @@ serve(
   {
     fetch: app.fetch,
     port: PORT,
-    host: HOST,
+    hostname: HOST,
   },
   (info) => {
     console.log(`Server is running on http://${HOST}:${info.port}`);

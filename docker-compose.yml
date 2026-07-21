@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  browser-tyan:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${BROWSER_TYAN_PORT:-3000}:${BROWSER_TYAN_PORT:-3000}"
+    volumes:
+      - ./browser-profile:/app/browser-profile
+    environment:
+      - BROWSER_TYAN_PORT=${BROWSER_TYAN_PORT:-3000}
+      - BROWSER_TYAN_PROFILE_DIR=${BROWSER_TYAN_PROFILE_DIR:-/app/browser-profile}
+    shm_size: '1gb'

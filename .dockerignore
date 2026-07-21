@@ -1,2 +1,12 @@
 node_modules
 dist
+.git
+nix
+result
+browser-profile
+.DS_Store
+flake.lock
+flake.nix
+docker-compose.yml
+todo.org
+README.md

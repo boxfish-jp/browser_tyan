@@ -1,12 +1,15 @@
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
-import { chromium } from "playwright-core";
 import { homedir } from "os";
 import { join } from "path";
+import { chromium } from "playwright-core";
 
 const app = new Hono();
 
-const PROFILE_DIR = join(homedir(), ".local/share/broweser-tyan/");
+const PORT = parseInt(process.env.BROWSER_TYAN_PORT ?? "3000", 10);
+const PROFILE_DIR =
+  process.env.BROWSER_TYAN_PROFILE_DIR ??
+  join(homedir(), ".local/share/broweser-tyan/");
 
 app.get("/", async (c) => {
   let context: Awaited<
@@ -73,7 +76,7 @@ app.get("/hand", async (c) => {
 serve(
   {
     fetch: app.fetch,
-    port: 3000,
+    port: PORT,
   },
   (info) => {
     console.log(`Server is running on http://localhost:${info.port}`);

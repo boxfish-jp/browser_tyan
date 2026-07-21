@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+self: { lib, config, pkgs, ... }:
 
 let
   cfg = config.services.browser-tyan;
@@ -11,8 +11,8 @@ in
 
     package = lib.mkOption {
       type = lib.types.package;
-      default = pkgs.browser-tyan;
-      defaultText = lib.literalExpression "pkgs.browser-tyan";
+      default = self.packages.${pkgs.system}.default;
+      defaultText = lib.literalExpression "self.packages.\${pkgs.system}.default";
       description = "browser-tyan package to use";
     };
 

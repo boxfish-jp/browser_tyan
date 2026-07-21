@@ -14,12 +14,7 @@
       ...
     }:
     let
-      nixosModule = { pkgs, ... }: {
-        imports = [ ./nix/nixos_module.nix ];
-        nixpkgs.overlays = [ (final: prev: {
-          browser-tyan = self.packages.${pkgs.system}.default;
-        }) ];
-      };
+      nixosModule = import ./nix/nixos_module.nix self;
 
       perSystem = flake-utils.lib.eachDefaultSystem (
         system:
